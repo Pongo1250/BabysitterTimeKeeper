@@ -18,13 +18,19 @@ class TimeValues(unittest.TestCase):
 		self.assertEqual(expected, result)
 
 	def test_timeSplit_dayCheck(self):
-		timestr = Babysitter.timeSplit("500a")[1]
-		timeint = Babysitter.timeSplit("500a")[0]
+		timestr = Babysitter.timeSplit("400a")[1]
+		timeint = Babysitter.timeSplit("400a")[0]
 		expected = "a"
+		expectedInt = 400
+		self.assertEqual(expected, timestr)
+		self.assertEqual(expectedInt, timeint)
+	def test_timeSplit_nightCheck(self):
+		timestr = Babysitter.timeSplit('500p')[1]
+		timeint = Babysitter.timeSplit("500p")[0]
+		expected = "p"
 		expectedInt = 500
 		self.assertEqual(expected, timestr)
 		self.assertEqual(expectedInt, timeint)
-
 
 
 
