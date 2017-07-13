@@ -1,5 +1,7 @@
 # Babysitter.py
 
+#time must be entered in military time
+
 
 def inputStartTime(rawStartTime):
 	#runs input  for start time
@@ -22,8 +24,11 @@ def timeSplit(rawStartTime):
 	return li
 
 def timeIsValid(rawStartTime):
+	#verify string formatting is correct
 	timeInt = rawStartTime[0:-1]
 	DayStr = rawStartTime[-1:]
+
+	#len should be 4. If it is not return wrong
 	if (len(rawStartTime) != 4):
 		#wrong satisfies 2nd test
 		###FIXME#### add print statement to inform user input is wrong
@@ -36,6 +41,13 @@ def timeIsValid(rawStartTime):
 		return "true"
 	if(DayStr == 'p'):
 		return "true"
-
 	return "false"
-	
+def timeCheck(time, ap):
+	#check that time is between 5:00 pm and 4:00 am
+	if(ap == "a"):
+		if(time<0):
+			return false
+		elif(time <=400):
+			return "true"
+		else:
+			return false
