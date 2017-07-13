@@ -1,9 +1,12 @@
 # Babysitter.py
 
+
 def inputStartTime(rawStartTime):
-	#check start time is valid
-	#takes a string and seperates it into starrTime int 
-	#and string for am/pm
+	#runs input  for start time
+	if (len(rawStartTime) != 4):
+		#wrong satisfies 2nd test
+		###FIXME#### add print statement to inform user input is wrong
+		return "wrong"
 	return rawStartTime
 
 
@@ -14,7 +17,25 @@ def timeSplit(rawStartTime):
 	timeInt = rawStartTime[0:-1]
 	timeInt = int(timeInt)
 	DayStr = rawStartTime[-1:]
-
 	li = [timeInt, DayStr]
 
 	return li
+
+def timeIsValid(rawStartTime):
+	timeInt = rawStartTime[0:-1]
+	DayStr = rawStartTime[-1:]
+	if (len(rawStartTime) != 4):
+		#wrong satisfies 2nd test
+		###FIXME#### add print statement to inform user input is wrong
+		return "wrong"
+	try:
+		timeInt = int(timeInt)
+	except ValueError:
+		return "notNum"
+	if (DayStr == 'a'):
+		return "true"
+	if(DayStr == 'p'):
+		return "true"
+
+	return "false"
+	
