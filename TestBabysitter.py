@@ -21,7 +21,7 @@ class TimeValues(unittest.TestCase):
 ####timeIsValid Tests
 	def test_timeIsValid_testInputLen(self):
 		result = Babysitter.timeIsValid("500000")
-		expected = "wrong"
+		expected = "false"
 		self.assertEqual(expected, result)
 	def test_timeIsValid_testIsInt(self):
 		result = Babysitter.timeIsValid("abcp")
@@ -57,12 +57,24 @@ class TimeValues(unittest.TestCase):
 		expectedInt = 500
 		self.assertEqual(expected, timestr)
 		self.assertEqual(expectedInt, timeint)
+	def test_timeSplit_LargeNumberCheck(self):
+		timestr = Babysitter.timeSplit('1057a')[1]
+		timeint = Babysitter.timeSplit('1057a')[0]
+		expected = "a"
+		expectedInt = 1057
+		self.assertEqual(expected, timestr)
+		self.assertEqual(expectedInt,timeint)
 
 	#timeCheck test
-	def test_timeCheck_amCorrectCheck(self):
-		isAns = Babysitter.timeCheck(300, "a")
+	def test_timeCheck_timeCorrectCheck(self):
+		isAns = Babysitter.timeCheck(303, "a")
 		expected = "true"
 		self.assertEqual(expected,isAns)
+
+	def test_timeCheck_timeWrongCheck(self):
+		isAns =Babysitter.timeCheck(660, "a")
+		expected = "false"
+		self.assertEqual(expected, isAns)
 
 
 if __name__ == '__main__':
