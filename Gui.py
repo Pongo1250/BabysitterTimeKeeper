@@ -4,6 +4,21 @@ from Tkinter import *
 root = Tk()
 root.title("BabysitterTimeKeeper")
 
+
+
+##########FUNCTIONS##############
+#creates popup window that tells you how much to charge
+def calculateBill():
+    bill = Toplevel()
+    bill.wm_title("Window")
+
+    l = tk.Label(bill, text="Input")
+    l.grid(row=0, column=0)
+
+
+
+
+
 #Dictionaries for Dropdown menu
 sTList= ["5p","6p", "7p", "8p", "9p", "10p", "11p", "12p","1a", "2a", "3a" ]
 eTList = ["6p", "7p", "8p", "9p", "10p", "11p", "12p","1a", "2a", "3a", "4a" ]
@@ -39,7 +54,8 @@ btimeMenu.grid(row = 3, column = 2)
 
 #Add Button to Calculate Charge
 Label(root, text = "Calculate Pay").grid(row = 4, column = 1)
-cpay = Button(root, text = "go", width = 6).grid(row = 4, column =2)
+cpay = Button(root, text = "go", width = 6, command = calculateBill).grid(row = 4, column =2)
+
 
 
 
