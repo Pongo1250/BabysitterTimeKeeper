@@ -37,9 +37,9 @@ btimeMenu = OptionMenu(root, btimevar, *bTList)
 Label(root, text = "Bed Time").grid(row = 3, column = 1)
 btimeMenu.grid(row = 3, column = 2)
 
-
-
-# change drop down menu
+#Add Button to Calculate Charge
+Label(root, text = "Calculate Pay").grid(row = 4, column = 1)
+cpay = Button(root, text = "go", width = 6).grid(row = 4, column =2)
 
 
 
