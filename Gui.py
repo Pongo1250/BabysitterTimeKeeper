@@ -5,8 +5,9 @@ root = Tk()
 root.title("BabysitterTimeKeeper")
 
 #Dictionaries for Dropdown menu
-sTime = {"5p","6p", "7p", "8p", "9p"}
-eTime = {"6p", "7p", "8p"}
+sTime = ["5p","6p", "7p", "8p", "9p", "10p", "11p", "12p","1a", "2a", "3a" ]
+eTime = ["6p", "7p", "8p", "9p", "10p", "11p", "12p","1a", "2a", "3a", "4a" ]
+bTime = ["5p","6p", "7p", "8p", "9p", "10p", "11p", "12p","1a", "2a", "3a", "4a"]
 
 #Set start time variable to 5p by default
 stimevar = StringVar(root)
