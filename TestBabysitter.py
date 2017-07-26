@@ -43,13 +43,62 @@ class TimeValues(unittest.TestCase):
 		self.assertEqual(expectedInt,timeint)
 
 	#timeCheck tests
+	#test should return true
 	def test_timeCheck_paCheck(self):
 		stime = "5p"
 		etime = "1a"
 		testValue = Babysitter.timeCheck(stime,etime)
 		expected = "true"
 		self.assertEqual(expected,testValue) 
-
+	#test should return true
+	def test_timeCheck_ppCheckT(self):
+		stime = "5p"
+		etime = "6p"
+		testValue = Babysitter.timeCheck(stime,etime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	#tests that etime and stime are the same should return false
+	def test_timeCheck_ppCheckSame(self):
+		stime = "6p"
+		etime = "6p"
+		testValue = Babysitter.timeCheck(stime, etime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+	#this test checks that a start time after the end time returns false
+	def test_timeCheck_ppCheckAfter(self):
+		stime = "6p"
+		etime = "5p"
+		testValue = Babysitter.timeCheck(stime, etime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+	#tests that a etime before stime returns false
+	def test_timeCheck_apCheck(self):
+		stime = "1a"
+		etime = "6p"
+		testValue = Babysitter.timeCheck(stime, etime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+	#this test should return true. 
+	def test_timeCheck_aaCheckT(self):
+		stime = "1a"
+		etime = "4a"
+		testValue = Babysitter.timeCheck(stime, etime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	#this test checks that the same start and end time returns false
+	def test_timeCheck_aaCheckSame(self):
+		stime = "2a"
+		etime = "2a"
+		testValue = Babysitter.timeCheck(stime, etime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+	#test checks that a start time after and end time returns false
+	def test_timeCheck_aaCheckAfter(self):
+		stime = "4a"
+		etime = "2a"
+		testValue = Babysitter.timeCheck(stime, etime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
 
 
 if __name__ == '__main__':

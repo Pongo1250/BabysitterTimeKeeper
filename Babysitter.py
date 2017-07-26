@@ -20,6 +20,8 @@ def timeSplit(rawStartTime):
 	return li
 
 def timeCheck(rawStartTime, rawEndTime):
+	#This function verifies that start time is before end time
+
 	#Split raw times into time and am/pm indicator
 	#start time split
 	stimeInt = rawStartTime[0:-1]
@@ -33,6 +35,20 @@ def timeCheck(rawStartTime, rawEndTime):
 	if(sDayStr == "p"):
 		if(eDayStr == "a"):
 			return "true"
+		if(eDayStr == "p"):
+			if(stimeInt < etimeInt):
+				return "true"
+			else:
+				return "false"
+	if (sDayStr == "a"):
+		if (eDayStr == "p"):
+			return "false"
+		if (eDayStr == "a"):
+			if(stimeInt < etimeInt):
+				return "true"
+			else:
+				return "false"
+
 
 
 
