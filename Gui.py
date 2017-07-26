@@ -12,13 +12,15 @@ def calculateBill():
     bill.wm_title("Babysitter Bill")
     
     #Time Information
-    l = Label(bill, text="Your bill for the customer will be:").grid(row=0, column=0)
+    l = Label(bill, text="Your bill for the customer:").grid(sticky = "w",row=0, column=0)
+    space =Label(bill, text = "" ).grid(row = 2)
     if(Babysitter.timeCheck(stimevar.get(),etimevar.get()) == "true"):
-    	time = Label(bill, text = "You babysat from" + stimevar.get() +" - "+ etimevar.get()).grid(row = 2, column = 0)
+    	time = Label(bill, text = "You babysat from " + stimevar.get() +" - "+ etimevar.get()).grid(sticky = "w",row = 3, column = 0)
     	
     	if(Babysitter.bedCheck(stimevar.get(), etimevar.get(), btimevar.get()) == "true"):
-    		bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(row = 3, column = 0)
-    		l1 = Label(bill, text ="Pay Breakdown:").grid(row = 4, column = 0)
+    		bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(sticky = "w",row = 4, column = 0)
+    		space1 = Label(bill, text = "" ).grid(row = 5)
+    		l1 = Label(bill, text ="Pay Breakdown:").grid(sticky = "w",row = 6, column = 0)
     		#split times into integers for math and assign to variables
     		stime = Babysitter.timeSplit(stimevar.get())
     		etime = Babysitter.timeSplit(etimevar.get())
@@ -47,26 +49,26 @@ def calculateBill():
     		Total = SToBVal + BToMVal + MToEVal
 
     		#Start time to Bed time pay label
-    		SPay = Label(bill, text = "Start to Bedtime: " + str(SToBHours)+ " hours = ").grid(row = 5, column = 0)
-    		SToBPay = Label(bill, text = "$" + str(SToBVal)).grid(row = 5, column = 1)
+    		SPay = Label(bill, text = "Start to Bedtime: " + str(SToBHours)+ " hours = ").grid(sticky = "w",row = 7, column = 0)
+    		SToBPay = Label(bill, text = "$" + str(SToBVal)).grid(row = 7, column = 1)
 
     		#Bed Tiem to midnight pay label
-    		MPay = Label(bill, text = "Bedtime to Midnight: " + str(BToMHours)+ " hours = ").grid(row = 6, column = 0)
-    		BToMPay = Label(bill, text = "$" + str(BToMVal)).grid(row = 6, column = 1)
+    		MPay = Label(bill, text = "Bedtime to Midnight: " + str(BToMHours)+ " hours = ").grid(sticky = "w",row = 8, column = 0)
+    		BToMPay = Label(bill, text = "$" + str(BToMVal)).grid(row = 8, column = 1)
 
     		#Midnight to Endtime pay Label
-    		EPay = Label(bill, text = "Midnight to End: " + str(MToEHours) + " hours = ").grid(row = 7, column = 0)
-    		MToEPay = Label(bill, text = "$" + str(MToEVal)).grid(row = 7, column = 1)
+    		EPay = Label(bill, text = "Midnight to End: " + str(MToEHours) + " hours = ").grid(sticky = "w",row = 9, column = 0)
+    		MToEPay = Label(bill, text = "$" + str(MToEVal)).grid(row = 9, column = 1)
     		
     		#Total
-    		TPay = Label(bill, text = "Total Charge: " + str(TotHours) + " hours = ").grid(row = 8, column = 0)
-    		TotPay = Label(bill, text = "$" + str(Total)).grid(row = 8, column = 1)
+    		TPay = Label(bill, text = "Total Charge: " + str(TotHours) + " hours = ").grid(sticky = "w",row = 10, column = 0)
+    		TotPay = Label(bill, text = "$" + str(Total)).grid(row = 10, column = 1)
 
 
     	else:
-    		bedT = Label(bill, text = "Bedtime must be between start and end times").grid(row = 3, column =0)
+    		bedT = Label(bill, text = "Bedtime must be between start and end times").grid(sticky = "w",row = 4, column =0)
     else:
-    	time = Label(bill, text = "start time must be before end time").grid(row = 2, column = 0)
+    	time = Label(bill, text = "start time must be before end time").grid(sticky = "w",row = 3, column = 0)
 
 
     #Pay Breakdown
