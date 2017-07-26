@@ -42,6 +42,13 @@ class TimeValues(unittest.TestCase):
 		self.assertEqual(expected, timestr)
 		self.assertEqual(expectedInt,timeint)
 
+	#timeCheck tests
+	def test_timeCheck_paCheck(self):
+		stime = "5p"
+		etime = "1a"
+		testValue = Babysitter.timeCheck(stime,etime)
+		expected = "true"
+		self.assertEqual(expected,testValue) 
 
 
 

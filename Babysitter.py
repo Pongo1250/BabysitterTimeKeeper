@@ -19,6 +19,22 @@ def timeSplit(rawStartTime):
 	li = [timeInt, DayStr]
 	return li
 
+def timeCheck(rawStartTime, rawEndTime):
+	#Split raw times into time and am/pm indicator
+	#start time split
+	stimeInt = rawStartTime[0:-1]
+	stimeInt = int(stimeInt)
+	sDayStr = rawStartTime[-1:]
+	#end time split
+	etimeInt = rawEndTime[0:-1]
+	etimeInt = int(etimeInt)
+	eDayStr = rawEndTime[-1:]
+
+	if(sDayStr == "p"):
+		if(eDayStr == "a"):
+			return "true"
+
+
 
 
 
