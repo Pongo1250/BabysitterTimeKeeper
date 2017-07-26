@@ -1,7 +1,6 @@
 # Babysitter.py
 
-#time must be entered in military time
-
+#time is entered through input in GUI dropdown menu
 
 def inputStartTime(rawStartTime):
 	#runs input  for start time
