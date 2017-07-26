@@ -27,7 +27,10 @@ def calculateBill():
     		#time breakdown 
     		SToBHours = btime - stime
     		if(btime< 12):
-    			BToMHours = 12 - btime
+    			if (etime <12):
+    				BToMHours = etime - btime
+    			else:
+    				BToMHours = 12 - btime
     		else:
     			BToMHours = 0
     		if(etime > 12):
@@ -38,7 +41,7 @@ def calculateBill():
 
     		#dollar values
     		SToBVal = Babysitter.SToBPay(stime, btime)
-    		BToMVal = Babysitter.BToMPay(btime)
+    		BToMVal = Babysitter.BToMPay(btime, etime)
     		MToEVal = Babysitter.MToEPay(etime)
 
     		Total = SToBVal + BToMVal + MToEVal

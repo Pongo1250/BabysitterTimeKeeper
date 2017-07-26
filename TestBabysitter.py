@@ -256,21 +256,31 @@ class TimeValues(unittest.TestCase):
 	###test BToMPay
 	#test bed time at midnight equals 0
 	def test_BToMPay_Same(self):
+		etime = 16
 		btime = 12
-		testValue = Babysitter.BToMPay(btime)
+		testValue = Babysitter.BToMPay(btime, etime)
 		expected = 0
 		self.assertEqual(expected, testValue)
 	#test should return 0 if bed time is greater than midnight
 	def test_BToMPay_Greater(self):
+		etime = 16
 		btime = 16
-		testValue = Babysitter.BToMPay(btime)
+		testValue = Babysitter.BToMPay(btime, etime)
 		expected = 0
 		self.assertEqual(expected, testValue)
 	#test should return 48
 	def test_BToMPay_Before(self):
+		etime = 16
 		btime = 6
-		testValue = Babysitter.BToMPay(btime)
+		testValue = Babysitter.BToMPay(btime, etime)
 		expected = 48
+		self.assertEqual(expected, testValue)
+	#test if etime before 12 should return 8
+	def test_BToMPay_ETimeBefore(self):
+		etime = 7
+		btime = 6
+		testValue = Babysitter.BToMPay(btime, etime)
+		expected = 8
 		self.assertEqual(expected, testValue)
 
 	###Test MToEPay

@@ -117,7 +117,11 @@ def SToBPay(stime, btime):
 	return Total
 
 #calculate pay from bed time to midnight. $8/hr
-def BToMPay(btime):
+def BToMPay(btime, etime):
+	if (etime< 12):
+		Ttime = etime - btime
+		Total = Ttime * 8
+		return Total
 	if (btime> 12):
 		return 0
 	else:
