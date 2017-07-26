@@ -125,4 +125,12 @@ def BToMPay(btime):
 		Total = Ttime * 8
 		return Total
 
+#calculate pay from Midnight to end of job. $16/hr
+def MToEPay(etime):
+	if (etime < 12):
+		return 0
+	else:
+		Ttime = etime - 12
+		Total = Ttime * 16
+		return Total
 

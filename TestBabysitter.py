@@ -273,6 +273,31 @@ class TimeValues(unittest.TestCase):
 		expected = 48
 		self.assertEqual(expected, testValue)
 
+	###Test MToEPay
+	#test should return 0 if end time is 12
+	def test_MToEPay_Same(self):
+		etime = 12
+		testValue = Babysitter.MToEPay(etime)
+		expected = 0
+		self.assertEqual(expected, testValue)
+	#test should return 0 if end time is before 12
+	def test_MToEPay_Before(self):
+		etime = 7
+		testValue = Babysitter.MToEPay(etime)
+		expected = 0
+		self.assertEqual(expected, testValue)
+	#test should return 16
+	def test_MToEPay_Sval(self):
+		etime = 13
+		testValue = Babysitter.MToEPay(etime)
+		expected = 16
+		self.assertEqual(expected, testValue)
+	#Test should return 64
+	def test_MToEPay_Sval(self):
+		etime = 16
+		testValue = Babysitter.MToEPay(etime)
+		expected = 64
+		self.assertEqual(expected, testValue)
 
 
 if __name__ == '__main__':
