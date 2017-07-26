@@ -237,7 +237,27 @@ class TimeValues(unittest.TestCase):
 		self.assertEqual(expected, testValue)
 
 	###test SToBPay
-
+	#test same start and bed time equals 0
+	def test_SToBPay_Same(self):
+		stime = 5
+		btime = 5
+		testValue = Babysitter.SToBPay(stime, btime)
+		expected = 0
+		self.assertEqual(expected, testValue)
+	#test a small value
+	def test_SToBPay_SmallVal(self):
+		stime = 5
+		btime = 7
+		testValue = Babysitter.SToBPay(stime,btime)
+		expected = 24
+		self.assertEqual(expected, testValue)
+	#test big value
+	def test_SToBPay_BigVal(self):
+		stime = 5
+		btime = 16
+		testValue = Babysitter.SToBPay(stime, btime)
+		expected = 132
+		self.assertEqual(expected, testValue)
 
 if __name__ == '__main__':
 	unittest.main()

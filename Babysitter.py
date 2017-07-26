@@ -117,6 +117,6 @@ def bedCheck(rawStartTime, rawEndTime, rawBedTime):
 def SToBPay(stime, btime):
 	Ttime = btime - stime
 	Total = Ttime * 12
-	return Ttime
+	return Total
 
 
