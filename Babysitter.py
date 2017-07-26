@@ -8,12 +8,10 @@ def inputStartTime(rawStartTime):
 	return rawStartTime
 
 
-###FIXME##### 
-#this will run in gui after time and bed check
-#must modify am times for math by increasing value by 12
+
 def timeSplit(rawStartTime):
-	#this function splits the inputed string into a start time integer
-	#and an am/pm indicator string
+	#this function returns the integer in the string and adds 12 if
+	#the integer is followed by an a
 	#The values then get stored in a list for later use. 
 	timeInt = rawStartTime[0:-1]
 	timeInt = int(timeInt)
@@ -22,8 +20,7 @@ def timeSplit(rawStartTime):
 	#converting am times to miliatry time
 	if (DayStr == "a"):
 		timeInt = timeInt + 12
-	li = [timeInt, DayStr]
-	return li
+	return timeInt
 
 def timeCheck(rawStartTime, rawEndTime):
 	#This function verifies that start time is before end time
