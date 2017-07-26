@@ -16,10 +16,13 @@ def calculateBill():
     l = Label(bill, text="Your bill for the customer will be:").grid(row=0, column=0)
     if(Babysitter.timeCheck(stimevar.get(),etimevar.get()) == "true"):
     	time = Label(bill, text = "You babysat from" + stimevar.get() +" - "+ etimevar.get()).grid(row = 2, column = 0)
+    	
     else:
     	time = Label(bill, text = "start time must be before end time").grid(row = 2, column = 0)
-    bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(row = 3, column = 0)
-
+    if(Babysitter.bedCheck(stimevar.get(), etimevar.get(), btimevar.get()) == "true"):
+    	bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(row = 3, column = 0)
+    else:
+    	bedT = Label(bill, text = "Bedtime must be between start and end times").grid(row = 3, column =0)
     #Pay Breakdown
 
 
