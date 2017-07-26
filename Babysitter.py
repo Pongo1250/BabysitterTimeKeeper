@@ -19,26 +19,9 @@ def timeSplit(rawStartTime):
 	li = [timeInt, DayStr]
 	return li
 
-def timeIsValid(rawStartTime):
-	#verify string formatting is correct example: 1259p or 013a
-	timeInt = rawStartTime[0:-1]
-	DayStr = rawStartTime[-1:]
 
-	#len should be 4. If it is not return wrong
-	'''if (len(rawStartTime) != 4):
-		#wrong satisfies 2nd test
-		###FIXME#### add print statement to inform user input is wrong
-		return "wrong" '''	
-	try:
-		timeInt = int(timeInt)
-	except ValueError:
-		return "notNum"
 
-	if (DayStr == 'a'):
-		return "true"
-	if(DayStr == 'p'):
-		return "true"
-	return "false"
+
 def timeCheck(time, ap):
 	#check that time is between 5:00 pm and 4:00 am
 	minutes = str(time)[-2:]

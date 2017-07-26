@@ -18,29 +18,6 @@ class TimeValues(unittest.TestCase):
 		self.assertEqual(expected, result)
 
 
-####timeIsValid Tests
-	def test_timeIsValid_testInputLen(self):
-		result = Babysitter.timeIsValid("500000")
-		expected = "false"
-		self.assertEqual(expected, result)
-	def test_timeIsValid_testIsInt(self):
-		result = Babysitter.timeIsValid("abcp")
-		expected = "notNum"
-		self.assertEqual(expected, result)
-
-	def test_timeIsValid_testIsInt(self):
-		result = Babysitter.timeIsValid("500l")
-		expected = "false"
-		self.assertEqual(expected, result)
-
-	def test_timeIsValid_testCorrectInput(self):
-		result = Babysitter.timeIsValid("500a")
-		expected = "true"
-		self.assertEqual(expected, result)
-	def test_timeIsValid_testCorrectInput2(self):
-		result = Babysitter.timeIsValid("835p")
-		expected = "true"
-		self.assertEqual(expected, result)
 
 	#timeSplit tests
 	def test_timeSplit_dayCheck(self):

@@ -10,12 +10,18 @@ root.title("BabysitterTimeKeeper")
 #creates popup window that tells you how much to charge
 def calculateBill():
     bill = Toplevel()
-    bill.wm_title("Window")
+    bill.wm_title("Babysitter Bill")
+    
+    #Time Information
+    l = Label(bill, text="Your bill for the customer will be:").grid(row=0, column=0)
+    time = Label(bill, text = "You babysat from" + stimevar.get() +" - "+ etimevar.get()).grid(row = 2, column = 0)
+    bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(row = 3, column = 0)
 
-    l = tk.Label(bill, text="Input")
-    l.grid(row=0, column=0)
+    #Pay Breakdown
 
 
+    #Total
+    
 
 
 
