@@ -5,7 +5,6 @@ root = Tk()
 root.title("BabysitterTimeKeeper")
 
 
-
 ##########FUNCTIONS##############
 #creates popup window that tells you how much to charge
 def calculateBill():
@@ -19,19 +18,28 @@ def calculateBill():
     	
     	if(Babysitter.bedCheck(stimevar.get(), etimevar.get(), btimevar.get()) == "true"):
     		bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(row = 3, column = 0)
+    		
+    		#split times into integers for math and assign to variables
+    		stime = Babysitter.timeSplit(stimevar.get())
+    		etime = Babysitter.timeSplit(etimevar.get())
+    		btime = Babysitter.timeSplit(btimevar.get())
+
+    		#time breakdown 
+    		SToBHours = btime - stime
+    		#dollar values
+    		SToBVal = Babysitter.SToBPay(stime, btime)	
+    		#Start time to Bed time pay label
+    		SPay = Label(bill, text = "Start to Bedtime: " + str(SToBHours)+ " hours = ").grid(row = 4, column = 0)
+    		SToBPay = Label(bill, text = "$" + str(SToBVal)).grid(row = 4, column = 1)
+
+
+   			#Total
+
+
+
+
     	else:
     		bedT = Label(bill, text = "Bedtime must be between start and end times").grid(row = 3, column =0)
-   		
-   		#split times into integers for math
-   		
-
-   		#Pay Breakdown
-
-
-
-   		#Total
-
-
     else:
     	time = Label(bill, text = "start time must be before end time").grid(row = 2, column = 0)
 
