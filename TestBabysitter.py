@@ -21,26 +21,20 @@ class TimeValues(unittest.TestCase):
 
 	####timeSplit tests
 	def test_timeSplit_dayCheck(self):
-		timestr = Babysitter.timeSplit("400a")[1]
-		timeint = Babysitter.timeSplit("400a")[0]
+		timestr = Babysitter.timeSplit("1a")[1]
+		timeint = Babysitter.timeSplit("1a")[0]
 		expected = "a"
-		expectedInt = 400
+		expectedInt = 13
 		self.assertEqual(expected, timestr)
 		self.assertEqual(expectedInt, timeint)
 	def test_timeSplit_nightCheck(self):
-		timestr = Babysitter.timeSplit('500p')[1]
-		timeint = Babysitter.timeSplit("500p")[0]
+		timestr = Babysitter.timeSplit('5p')[1]
+		timeint = Babysitter.timeSplit("5p")[0]
 		expected = "p"
-		expectedInt = 500
+		expectedInt = 5
 		self.assertEqual(expected, timestr)
 		self.assertEqual(expectedInt, timeint)
-	def test_timeSplit_LargeNumberCheck(self):
-		timestr = Babysitter.timeSplit('1057a')[1]
-		timeint = Babysitter.timeSplit('1057a')[0]
-		expected = "a"
-		expectedInt = 1057
-		self.assertEqual(expected, timestr)
-		self.assertEqual(expectedInt,timeint)
+
 
 	###timeCheck tests
 	#test should return true
@@ -241,6 +235,9 @@ class TimeValues(unittest.TestCase):
 		testValue = Babysitter.bedCheck(stime, etime, btime)
 		expected = "false"
 		self.assertEqual(expected, testValue)
+
+	###test SToBPay
+
 
 if __name__ == '__main__':
 	unittest.main()
