@@ -18,7 +18,7 @@ def calculateBill():
     	
     	if(Babysitter.bedCheck(stimevar.get(), etimevar.get(), btimevar.get()) == "true"):
     		bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(row = 3, column = 0)
-    		l1 = Label(bill, text ="Pay Breakdown").grid(row = 4, column = 0)
+    		l1 = Label(bill, text ="Pay Breakdown:").grid(row = 4, column = 0)
     		#split times into integers for math and assign to variables
     		stime = Babysitter.timeSplit(stimevar.get())
     		etime = Babysitter.timeSplit(etimevar.get())
@@ -26,15 +26,38 @@ def calculateBill():
 
     		#time breakdown 
     		SToBHours = btime - stime
+    		if(btime< 12):
+    			BToMHours = 12 - btime
+    		else:
+    			BToMHours = 0
+    		if(etime > 12):
+    			MToEHours = etime -12
+    		else:
+    			MToEHours = 0
+    		TotHours = SToBHours + BToMHours + MToEHours
+
     		#dollar values
-    		SToBVal = Babysitter.SToBPay(stime, btime)	
+    		SToBVal = Babysitter.SToBPay(stime, btime)
+    		BToMVal = Babysitter.BToMPay(btime)
+    		MToEVal = Babysitter.MToEPay(etime)
+
+    		Total = SToBVal + BToMVal + MToEVal
+
     		#Start time to Bed time pay label
     		SPay = Label(bill, text = "Start to Bedtime: " + str(SToBHours)+ " hours = ").grid(row = 5, column = 0)
     		SToBPay = Label(bill, text = "$" + str(SToBVal)).grid(row = 5, column = 1)
 
-   			#Total
+    		#Bed Tiem to midnight pay label
+    		MPay = Label(bill, text = "Bedtime to Midnight: " + str(BToMHours)+ " hours = ").grid(row = 6, column = 0)
+    		BToMPay = Label(bill, text = "$" + str(BToMVal)).grid(row = 6, column = 1)
 
-
+    		#Midnight to Endtime pay Label
+    		EPay = Label(bill, text = "Midnight to End: " + str(MToEHours) + " hours = ").grid(row = 7, column = 0)
+    		MToEPay = Label(bill, text = "$" + str(MToEVal)).grid(row = 7, column = 1)
+    		
+    		#Total
+    		TPay = Label(bill, text = "Total Charge: " + str(TotHours) + " hours = ").grid(row = 8, column = 0)
+    		TotPay = Label(bill, text = "$" + str(Total)).grid(row = 8, column = 1)
 
 
     	else:
