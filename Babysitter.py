@@ -24,6 +24,7 @@ def timeCheck(rawStartTime, rawEndTime):
 
 	#Split raw times into time and am/pm indicator
 	#start time split
+
 	stimeInt = rawStartTime[0:-1]
 	stimeInt = int(stimeInt)
 	sDayStr = rawStartTime[-1:]
@@ -48,6 +49,36 @@ def timeCheck(rawStartTime, rawEndTime):
 				return "true"
 			else:
 				return "false"
+
+
+def bedCheck(rawStartTime, rawEndTime, rawBedTime):
+	#This function verifies that bed time falls between
+	# start time and end time
+
+	#Split raw times into time and am/pm indicator
+	#start time split
+	stimeInt = rawStartTime[0:-1]
+	stimeInt = int(stimeInt)
+	sDayStr = rawStartTime[-1:]
+	#end time split
+	etimeInt = rawEndTime[0:-1]
+	etimeInt = int(etimeInt)
+	eDayStr = rawEndTime[-1:]
+	#bed time split
+	btimeInt = rawBedTime[0:-1]
+	btimeInt = int(btimeInt)
+	bDayStr = rawBedTime[-1:]
+
+	if (sDayStr == "p"):
+		if(eDayStr == "p"):
+			if(btimeInt>= stimeInt):
+				if(btimeInt<= etimeInt):
+					return "true"
+				else:
+					return "false"
+			else:
+				return "false"
+
 
 
 

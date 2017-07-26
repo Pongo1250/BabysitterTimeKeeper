@@ -19,7 +19,7 @@ class TimeValues(unittest.TestCase):
 
 
 
-	#timeSplit tests
+	####timeSplit tests
 	def test_timeSplit_dayCheck(self):
 		timestr = Babysitter.timeSplit("400a")[1]
 		timeint = Babysitter.timeSplit("400a")[0]
@@ -42,7 +42,7 @@ class TimeValues(unittest.TestCase):
 		self.assertEqual(expected, timestr)
 		self.assertEqual(expectedInt,timeint)
 
-	#timeCheck tests
+	###timeCheck tests
 	#test should return true
 	def test_timeCheck_paCheck(self):
 		stime = "5p"
@@ -100,6 +100,46 @@ class TimeValues(unittest.TestCase):
 		expected = "false"
 		self.assertEqual(expected, testValue)
 
+	###bedCheck tests
+	#test should return true for bed time between s and e time
+	def test_bedCheck_ppCheckbetween(self):
+		stime = "5p"
+		etime = "9p"
+		btime = "6p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	#test same start and bed time. should retun true
+	def test_bedCheck_ppCheckStart(self):
+		stime = "5p"
+		etime = "9p"
+		btime = "5p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+
+	#test same end and bed time. should return true
+	def test_bedCheck_ppCheckEnd(self):
+		stime = "5p"
+		etime = "9p"
+		btime = "9p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	def test_bedCheck_ppCheckBefore(self):
+		stime = "7p"
+		etime = "9p"
+		btime = "6p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+	def test_bedCheck_ppCheckAfter(self):
+		stime = "7p"
+		etime = "9p"
+		btime = "10p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
 
 if __name__ == '__main__':
 	unittest.main()
