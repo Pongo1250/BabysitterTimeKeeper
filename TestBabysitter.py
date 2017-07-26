@@ -101,6 +101,8 @@ class TimeValues(unittest.TestCase):
 		self.assertEqual(expected, testValue)
 
 	###bedCheck tests
+
+	##tests night time values
 	#test should return true for bed time between s and e time
 	def test_bedCheck_ppCheckbetween(self):
 		stime = "5p"
@@ -117,7 +119,6 @@ class TimeValues(unittest.TestCase):
 		testValue = Babysitter.bedCheck(stime, etime, btime)
 		expected = "true"
 		self.assertEqual(expected, testValue)
-
 	#test same end and bed time. should return true
 	def test_bedCheck_ppCheckEnd(self):
 		stime = "5p"
@@ -126,6 +127,7 @@ class TimeValues(unittest.TestCase):
 		testValue = Babysitter.bedCheck(stime, etime, btime)
 		expected = "true"
 		self.assertEqual(expected, testValue)
+	#tests that bedtime before start time returns false
 	def test_bedCheck_ppCheckBefore(self):
 		stime = "7p"
 		etime = "9p"
@@ -133,10 +135,109 @@ class TimeValues(unittest.TestCase):
 		testValue = Babysitter.bedCheck(stime, etime, btime)
 		expected = "false"
 		self.assertEqual(expected, testValue)
+	#tests that bed time after end time returns false
 	def test_bedCheck_ppCheckAfter(self):
 		stime = "7p"
 		etime = "9p"
 		btime = "10p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+	#tests that bed time in the morning with end time at night returns false
+	def test_bedCheck_ppCheckMorning(self):
+		stime = "7p"
+		etime = "9p"
+		btime = "1a"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+
+	## checks bed time between night start time and day end time
+	#test should return true for bed time between start and end time
+	def test_bedCheck_paCheckBetweenp(self):
+		stime = "7p"
+		etime = "3a"
+		btime = "9p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	def test_bedCheck_paCheckBetweena(self):
+		stime = "7p"
+		etime = "3a"
+		btime = "1a"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	#test should return true for same bed and end time
+	def test_bedCheck_paCheckSameE(self):
+		stime = "7p"
+		etime = "3a"
+		btime = "3a"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	def test_bedCheck_paCheckSameS(self):
+		stime = "7p"
+		etime = "3a"
+		btime = "7p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	#test should return false for btime before stime
+	def test_bedCheck_paCheckBefore(self):
+		stime = "7p"
+		etime = "3a"
+		btime = "5p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+	#test should return false for btime after etime
+	def test_bedCheck_paCheckAfter(self):
+		stime = "7p"
+		etime = "3a"
+		btime = "4a"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+
+	##test morning times
+	#test should return true if btime between s and e time
+	def test_bedCheck_aaCheckBetween(self):
+		stime = "1a"
+		etime = "3a"
+		btime = "2a"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	#test should return true if btime and stime are the same
+	def test_bedCheck_aaCheckSameS(self):
+		stime = "1a"
+		etime = "3a"
+		btime = "1a"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	#test should return true if btime and etime are the same
+	def test_bedCheck_aaCheckSameE(self):
+		stime = "1a"
+		etime = "3a"
+		btime = "3a"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "true"
+		self.assertEqual(expected, testValue)
+	#test should return false if btime is pm nd stime is am
+	def test_bedCheck_aaCheckBeforeP(self):
+		stime = "1a"
+		etime = "3a"
+		btime = "5p"
+		testValue = Babysitter.bedCheck(stime, etime, btime)
+		expected = "false"
+		self.assertEqual(expected, testValue)
+	#test should return false if btime is after etime
+	def test_bedCheck_aaCheckAfterE(self):
+		stime = "1a"
+		etime = "3a"
+		btime = "4a"
 		testValue = Babysitter.bedCheck(stime, etime, btime)
 		expected = "false"
 		self.assertEqual(expected, testValue)

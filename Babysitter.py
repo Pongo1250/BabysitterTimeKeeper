@@ -71,6 +71,8 @@ def bedCheck(rawStartTime, rawEndTime, rawBedTime):
 
 	if (sDayStr == "p"):
 		if(eDayStr == "p"):
+			if(bDayStr == "a"):
+				return "false"
 			if(btimeInt>= stimeInt):
 				if(btimeInt<= etimeInt):
 					return "true"
@@ -78,7 +80,31 @@ def bedCheck(rawStartTime, rawEndTime, rawBedTime):
 					return "false"
 			else:
 				return "false"
-
+		if(eDayStr == "a"):
+			if(bDayStr == "p"):
+				if(btimeInt >= stimeInt):
+					return "true"
+				else:
+					return "false"
+			if(bDayStr == "a"):
+				if (btimeInt <= etimeInt):
+					return "true"
+				else: 
+					return "false"
+	#checks that bedtime is between or equal to morning times
+	if(sDayStr =="a"):
+		if(eDayStr == "a"):
+			if(bDayStr == "p"):
+				return "false"
+			if(btimeInt >= stimeInt):
+				if(btimeInt <= etimeInt):
+					return "true"
+				else:
+					return "false"
+			else:
+				return "false"
+		else:
+			return "false"
 
 
 
