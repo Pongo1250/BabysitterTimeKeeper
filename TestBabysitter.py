@@ -42,16 +42,7 @@ class TimeValues(unittest.TestCase):
 		self.assertEqual(expected, timestr)
 		self.assertEqual(expectedInt,timeint)
 
-	#timeCheck test
-	def test_timeCheck_timeCorrectCheck(self):
-		isAns = Babysitter.timeCheck(303, "a")
-		expected = "true"
-		self.assertEqual(expected,isAns)
 
-	def test_timeCheck_timeWrongCheck(self):
-		isAns =Babysitter.timeCheck(660, "a")
-		expected = "false"
-		self.assertEqual(expected, isAns)
 
 
 if __name__ == '__main__':

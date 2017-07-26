@@ -22,18 +22,4 @@ def timeSplit(rawStartTime):
 
 
 
-def timeCheck(time, ap):
-	#check that time is between 5:00 pm and 4:00 am
-	minutes = str(time)[-2:]
-	minutes = int(minutes)
-	if(time >1259):
-		print ("time must be between 000 and 1259")
-		return "false"
-	elif(time< 0):
-		print("time must be between 00 and 1259")
-		return "false"
-	if (minutes > 59):
-		print("minutes must be between 00 and 59")
-		return "false"
-	return "true"
 
