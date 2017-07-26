@@ -253,5 +253,27 @@ class TimeValues(unittest.TestCase):
 		expected = 132
 		self.assertEqual(expected, testValue)
 
+	###test BToMPay
+	#test bed time at midnight equals 0
+	def test_BToMPay_Same(self):
+		btime = 12
+		testValue = Babysitter.BToMPay(btime)
+		expected = 0
+		self.assertEqual(expected, testValue)
+	#test should return 0 if bed time is greater than midnight
+	def test_BToMPay_Greater(self):
+		btime = 16
+		testValue = Babysitter.BToMPay(btime)
+		expected = 0
+		self.assertEqual(expected, testValue)
+	#test should return 48
+	def test_BToMPay_Before(self):
+		btime = 6
+		testValue = Babysitter.BToMPay(btime)
+		expected = 48
+		self.assertEqual(expected, testValue)
+
+
+
 if __name__ == '__main__':
 	unittest.main()

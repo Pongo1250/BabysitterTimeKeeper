@@ -110,10 +110,19 @@ def bedCheck(rawStartTime, rawEndTime, rawBedTime):
 			return "false"
 
 
-
+#calculate pay from start time to bed time. $12/hr
 def SToBPay(stime, btime):
 	Ttime = btime - stime
 	Total = Ttime * 12
 	return Total
+
+#calculate pay from bed time to midnight. $8/hr
+def BToMPay(btime):
+	if (btime> 12):
+		return 0
+	else:
+		Ttime = 12 - btime
+		Total = Ttime * 8
+		return Total
 
 

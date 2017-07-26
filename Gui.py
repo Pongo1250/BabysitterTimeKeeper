@@ -18,7 +18,7 @@ def calculateBill():
     	
     	if(Babysitter.bedCheck(stimevar.get(), etimevar.get(), btimevar.get()) == "true"):
     		bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(row = 3, column = 0)
-    		
+    		l1 = Label(bill, text ="Pay Breakdown").grid(row = 4, column = 0)
     		#split times into integers for math and assign to variables
     		stime = Babysitter.timeSplit(stimevar.get())
     		etime = Babysitter.timeSplit(etimevar.get())
@@ -29,9 +29,8 @@ def calculateBill():
     		#dollar values
     		SToBVal = Babysitter.SToBPay(stime, btime)	
     		#Start time to Bed time pay label
-    		SPay = Label(bill, text = "Start to Bedtime: " + str(SToBHours)+ " hours = ").grid(row = 4, column = 0)
-    		SToBPay = Label(bill, text = "$" + str(SToBVal)).grid(row = 4, column = 1)
-
+    		SPay = Label(bill, text = "Start to Bedtime: " + str(SToBHours)+ " hours = ").grid(row = 5, column = 0)
+    		SToBPay = Label(bill, text = "$" + str(SToBVal)).grid(row = 5, column = 1)
 
    			#Total
 
