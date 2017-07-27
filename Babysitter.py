@@ -1,18 +1,11 @@
-# Babysitter.py
-
+#Babysitter.py
 #time is entered through input in GUI dropdown menu
-
-def inputStartTime(rawStartTime):
-	#runs input  for start time
-	#will run sub processes here for start time 
-	return rawStartTime
-
 
 
 def timeSplit(rawStartTime):
-	#this function returns the integer in the string and adds 12 if
-	#the integer is followed by an a
-	#The values then get stored in a list for later use. 
+	#this function returns the integer in the string and adds 12 to
+	#convert to military time if the integer is followed by an a.
+	#The function then returns an int in military time.
 	timeInt = rawStartTime[0:-1]
 	timeInt = int(timeInt)
 	DayStr = rawStartTime[-1:]
@@ -24,10 +17,9 @@ def timeSplit(rawStartTime):
 
 def timeCheck(rawStartTime, rawEndTime):
 	#This function verifies that start time is before end time
-
+	
 	#Split raw times into time and am/pm indicator
 	#start time split
-
 	stimeInt = rawStartTime[0:-1]
 	stimeInt = int(stimeInt)
 	sDayStr = rawStartTime[-1:]
@@ -36,6 +28,7 @@ def timeCheck(rawStartTime, rawEndTime):
 	etimeInt = int(etimeInt)
 	eDayStr = rawEndTime[-1:]
 
+	#checks that start time is before end time
 	if(sDayStr == "p"):
 		if(eDayStr == "a"):
 			return "true"
@@ -72,6 +65,7 @@ def bedCheck(rawStartTime, rawEndTime, rawBedTime):
 	btimeInt = int(btimeInt)
 	bDayStr = rawBedTime[-1:]
 
+	#checks that bedtime is inbetween start and end time
 	if (sDayStr == "p"):
 		if(eDayStr == "p"):
 			if(bDayStr == "a"):

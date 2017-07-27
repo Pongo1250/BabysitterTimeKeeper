@@ -1,22 +1,26 @@
 import Babysitter
 from Tkinter import *
 
+#creates main program window
 root = Tk()
 root.title("BabysitterTimeKeeper")
 
 
 ##########FUNCTIONS##############
-#creates popup window that tells you how much to charge
+#creates popup window that tells you how much to charge and gives you a breakdown
+#of cost and hours.
 def calculateBill():
+	#creates new window
     bill = Toplevel()
     bill.wm_title("Babysitter Bill")
     
     #Time Information
     l = Label(bill, text="Your bill for the customer:").grid(sticky = "w",row=0, column=0)
     space =Label(bill, text = "" ).grid(row = 2)
+    #checks to see that times are valid
     if(Babysitter.timeCheck(stimevar.get(),etimevar.get()) == "true"):
     	time = Label(bill, text = "You babysat from " + stimevar.get() +" - "+ etimevar.get()).grid(sticky = "w",row = 3, column = 0)
-    	
+    	#checks to see if bed time is valid
     	if(Babysitter.bedCheck(stimevar.get(), etimevar.get(), btimevar.get()) == "true"):
     		bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(sticky = "w",row = 4, column = 0)
     		space1 = Label(bill, text = "" ).grid(row = 5)
@@ -30,7 +34,9 @@ def calculateBill():
 
     		#time breakdown 
     		SToBHours = btime - stime
+    		#checks that bedtime is before 12
     		if(btime< 12):
+    			#modifies BToMHours if etime is before 12
     			if (etime <12):
     				BToMHours = etime - btime
     			else:
@@ -55,7 +61,7 @@ def calculateBill():
     		SRate = Label(bill, text ="$12/hr").grid(sticky = "w",row = 7, column = 1)
     		SToBPay = Label(bill, text = "$" + str(SToBVal)).grid(row = 7, column = 2)
 
-    		#Bed Tiem to midnight pay label
+    		#Bed Time to midnight pay label
     		MPay = Label(bill, text = "Bedtime to Midnight: " + str(BToMHours)+ " hours = ").grid(sticky = "w",row = 8, column = 0)
     		MRate = Label(bill, text ="$8/hr").grid(sticky = "w",row = 8, column = 1)
     		BToMPay = Label(bill, text = "$" + str(BToMVal)).grid(row = 8, column = 2)
@@ -76,15 +82,9 @@ def calculateBill():
     	time = Label(bill, text = "start time must be before end time").grid(sticky = "w",row = 3, column = 0)
 
 
-    #Pay Breakdown
-
-
-    #Total
-
-
-
 
 #Dictionaries for Dropdown menu
+#contains predefined times
 sTList= ["5p","6p", "7p", "8p", "9p", "10p", "11p", "12p","1a", "2a", "3a" ]
 eTList = ["6p", "7p", "8p", "9p", "10p", "11p", "12p","1a", "2a", "3a", "4a" ]
 bTList = ["5p","6p", "7p", "8p", "9p", "10p", "11p", "12p","1a", "2a", "3a", "4a"]
@@ -122,6 +122,5 @@ Label(root, text = "Calculate Pay").grid(row = 4, column = 1)
 cpay = Button(root, text = "go", width = 6, command = calculateBill).grid(row = 4, column =2)
 
 
-
-
+#starts main window
 root.mainloop()
