@@ -21,6 +21,8 @@ def calculateBill():
     		bedT = Label(bill, text = "Bedtime was " + btimevar.get()).grid(sticky = "w",row = 4, column = 0)
     		space1 = Label(bill, text = "" ).grid(row = 5)
     		l1 = Label(bill, text ="Pay Breakdown:").grid(sticky = "w",row = 6, column = 0)
+    		lr = Label(bill, text ="Pay Rate").grid(sticky = "w",row = 6, column = 1)
+    		lp = Label(bill, text ="Pay").grid(sticky = "w",row = 6, column = 2)
     		#split times into integers for math and assign to variables
     		stime = Babysitter.timeSplit(stimevar.get())
     		etime = Babysitter.timeSplit(etimevar.get())
@@ -50,19 +52,22 @@ def calculateBill():
 
     		#Start time to Bed time pay label
     		SPay = Label(bill, text = "Start to Bedtime: " + str(SToBHours)+ " hours = ").grid(sticky = "w",row = 7, column = 0)
-    		SToBPay = Label(bill, text = "$" + str(SToBVal)).grid(row = 7, column = 1)
+    		SRate = Label(bill, text ="$12/hr").grid(sticky = "w",row = 7, column = 1)
+    		SToBPay = Label(bill, text = "$" + str(SToBVal)).grid(row = 7, column = 2)
 
     		#Bed Tiem to midnight pay label
     		MPay = Label(bill, text = "Bedtime to Midnight: " + str(BToMHours)+ " hours = ").grid(sticky = "w",row = 8, column = 0)
-    		BToMPay = Label(bill, text = "$" + str(BToMVal)).grid(row = 8, column = 1)
+    		MRate = Label(bill, text ="$8/hr").grid(sticky = "w",row = 8, column = 1)
+    		BToMPay = Label(bill, text = "$" + str(BToMVal)).grid(row = 8, column = 2)
 
     		#Midnight to Endtime pay Label
     		EPay = Label(bill, text = "Midnight to End: " + str(MToEHours) + " hours = ").grid(sticky = "w",row = 9, column = 0)
-    		MToEPay = Label(bill, text = "$" + str(MToEVal)).grid(row = 9, column = 1)
+    		ERate = Label(bill, text ="$16/hr").grid(sticky = "w",row = 9, column = 1)
+    		MToEPay = Label(bill, text = "$" + str(MToEVal)).grid(row = 9, column = 2)
     		
     		#Total
-    		TPay = Label(bill, text = "Total Charge: " + str(TotHours) + " hours = ").grid(sticky = "w",row = 10, column = 0)
-    		TotPay = Label(bill, text = "$" + str(Total)).grid(row = 10, column = 1)
+    		TPay = Label(bill, text = "Total Charge: " ).grid(sticky = "w",row = 10, column = 0)
+    		TotPay = Label(bill, text = "$" + str(Total)).grid(row = 10, column = 2)
 
 
     	else:
@@ -91,7 +96,7 @@ stimevar.set("5p")
 
 #Start time menu 
 stimeMenu = OptionMenu(root, stimevar, *sTList)
-Label(root, text = "Start Time").grid(row = 1, column = 1)
+Label(root, text = "Start Time").grid(sticky ="w", row = 1, column = 1)
 stimeMenu.grid(row = 1, column = 2)
 
 #set end time variable to 6p by default
@@ -100,7 +105,7 @@ etimevar.set("6p")
 
 #End time menu
 etimeMenu = OptionMenu(root, etimevar, *eTList)
-Label(root, text = "End Time").grid(row = 2, column = 1)
+Label(root, text = "End Time").grid(sticky ="w", row = 2, column = 1)
 etimeMenu.grid(row =2, column = 2)
 
 #set bed time variable to 5p by default
@@ -109,7 +114,7 @@ btimevar.set("5p")
 
 #Bed Time Menu
 btimeMenu = OptionMenu(root, btimevar, *bTList)
-Label(root, text = "Bed Time").grid(row = 3, column = 1)
+Label(root, text = "Bed Time").grid(sticky ="w", row = 3, column = 1)
 btimeMenu.grid(row = 3, column = 2)
 
 #Add Button to Calculate Charge
